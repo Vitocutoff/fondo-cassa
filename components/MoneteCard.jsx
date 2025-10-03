@@ -27,34 +27,72 @@ export default function CoinCard() {
   );
 
   return (
-    <div className="flex flex-col flex-1 rounded-lg bg-gradient-to-r from-neutral-800 to-neutral-700 border border-white/5 shadow-2xl overflow-hidden">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-white/5">
-        <h3 className="text-lg font-semibold text-gray-400">Monete</h3>
-        <span className="text-sm font-medium text-gray-200">
-          €{total.toFixed(2)}
+
+    // CORPO DELLA CARD
+    <div
+      className="flex flex-col flex-1 rounded-lg
+                 bg-gradient-to-r from-neutral-800 to-neutral-700
+                 border border-white/10 shadow-2xl overflow-hidden"
+    >
+
+      <div
+        className="flex items-center justify-between
+                   px-8 py-4 border-b border-white/10
+                   bg-gradient-to-b from-neutral-900 to-neutral-800"
+      >
+
+        <h3
+          className="text-sm font-semibold text-gray-300"
+        >
+
+          MONETE
+
+        </h3>
+
+        <span
+          className="text-lg font-medium text-green-500/70"
+        >
+
+          {total.toFixed(2)} €
+
         </span>
+
       </div>
-      <div className="flex-1 overflow-auto">
+
+      <div
+        className="flex-1 overflow-auto"
+      >
+
         {coins.map(c => {
           const qty = coinQty[String(c.value)] || 0;
           const partial = (qty * c.value).toFixed(2);
           return (
+
             <div
               key={c.value}
-              className="grid grid-cols-[1fr_auto_auto] items-center gap-3 px-4 py-2"
+              className="grid grid-cols-3 items-center gap-3
+                         px-8 py-3 border-b border-white/5"
             >
-              <div className="text-sm text-gray-200">{c.label}</div>
+
+              <div
+                className="text-sm text-gray-200"
+              >
+                {c.label}
+
+              </div>
+
               <input
                 type="number"
                 inputMode="numeric"
                 pattern="[0-9]*"
                 value={qty}
                 onChange={e => updateQty(c.value, e.target.value)}
-                className="w-20 text-center bg-transparent border border-white/10 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
                 min="0"
+                className="w-25 text-center text-gray-200
+                           bg-gradient-to-r from-neutral-800 to-neutral-700 border border-white/5 rounded-full px-3 py-1 text-sm focus:outline-none"
               />
               <div className="text-right font-semibold text-gray-100">
-                €{partial}
+                {partial} €
               </div>
             </div>
           );

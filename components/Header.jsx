@@ -177,7 +177,7 @@ function CustomSelect({ selected, setSelected, options, placeholder }) {
 
         </Listbox.Button>
 
-        {/*  */}
+        {/* GESTIONE TRANSIZIONE APERTURA/CHIUSURA DEL PANNELLO DEL SELECT PERSONALIZZATO */}
         <Transition
           leave="transition ease-in duration-100"
           leaveFrom="opacity-100"
@@ -185,30 +185,39 @@ function CustomSelect({ selected, setSelected, options, placeholder }) {
         >
           <Listbox.Options
             className="absolute mt-2 w-full overflow-auto rounded-xl
-                       bg-gradient-to-r from-neutral-900/90 to-neutral-800/90 backdrop-blur
+                       bg-gradient-to-r from-neutral-900/80 to-neutral-800/80 backdrop-blur
                        border border-white/5 py-1 text-gray-100 shadow-xl z-50"
           >
+
             {options.map((opt) => (
+
               <Listbox.Option
                 key={opt.id}
                 value={opt}
                 className={({ active }) =>
                   `relative cursor-pointer select-none py-2 pl-3 pr-4 ${
-                    active ? "bg-neutral-700 text-gray-100" : "text-gray-300"
+                    active ? "bg-neutral-600/20 text-gray-50" : "text-gray-300"
                   }`
                 }
               >
+
                 {opt.name}
+
               </Listbox.Option>
+
             ))}
+
           </Listbox.Options>
+
         </Transition>
+
       </div>
+
     </Listbox>
   );
 }
 
-/* COMPONENTE CALENDARIO */
+// COMPONENTE CALENDARIO
 function Calendar({ date, setDate }) {
   const today = new Date();
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
@@ -273,9 +282,9 @@ function Calendar({ date, setDate }) {
             <button
               key={d.toISOString()}
               onClick={() => setDate(d)}
-              className={`w-8 h-8 flex items-center justify-center rounded-md
-                ${isToday ? "border border-cyan-400/70" : ""}
-                hover:bg-cyan-500/30`}
+              className={`w-8 h-8 flex items-center justify-center rounded-full
+                ${isToday ? "bg-fuchsia-500/30 border border-white/10 shadow-2xl" : ""}
+                hover:bg-fuchsia-500/20`}
             >
               {d.getDate()}
             </button>

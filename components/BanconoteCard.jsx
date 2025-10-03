@@ -26,11 +26,30 @@ export default function NoteCard() {
   );
 
   return (
-    <div className="flex flex-col flex-1 rounded-xl bg-gradient-to-l from-neutral-800 to-neutral-700 shadow-lg overflow-hidden">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
-        <h3 className="text-lg font-semibold text-purple-300">Banconote</h3>
-        <span className="text-sm font-medium text-gray-200">
-          €{total.toFixed(2)}
+
+    // CORPO DELLA CARD
+    <div
+      className="flex flex-col flex-1 rounded-lg
+                 bg-gradient-to-l from-neutral-800 to-neutral-700
+                 border border-white/10 shadow-2xl overflow-hidden"
+    >
+
+      <div
+        className="flex items-center justify-between
+                   px-6 py-5 border-b border-white/10
+                   bg-gradient-to-b from-neutral-900 to-neutral-800"
+      >
+
+        <h3
+          className="text-sm font-semibold text-gray-300"
+        >
+
+          BANCONOTE
+
+        </h3>
+
+        <span className="text-sm font-medium text-green-500/70">
+          {total.toFixed(2)} €
         </span>
       </div>
       <div className="flex-1 overflow-auto">
