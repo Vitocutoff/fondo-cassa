@@ -29,34 +29,58 @@ export default function Header() {
     <header
       style={{ boxShadow: "0 0 5px oklch(66.7% 0.295 322.15deg / 0.3), 0 0 10px oklch(66.7% 0.295 322.15deg / 0.1)" }}
       className="h-16 flex items-center justify-between px-6 z-50
-                 border-b border-white/5
-                 bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-900"
+                 border-b border-white/5 bg-gradient-to-r
+                 from-neutral-900 via-neutral-800 to-neutral-900"
     >
 
       <h1
-        className="text-2xl font-bold text-gray-200 tracking-wide"
+        className="text-2xl font-bold
+                   text-gray-200 tracking-wide"
       >
+
         Fondo Cassa
+
       </h1>
 
-      <div className="flex items-center gap-6">
+      {/* CONTENITORE DATEPICKER E SELECT PERSONALIZZATI */}
+      <div
+        className="flex items-center gap-6"
+      >
 
         {/* DATE PICKER */}
-        <Popover className="relative">
+        <Popover
+          className="relative"
+        >
+
           {({ close }) => (
+
             <>
+
+              {/* BOTTONE DEL DATEPICKER */}
               <Popover.Button
                 style={{ boxShadow: "0 0 5px oklch(66.7% 0.295 322.15deg / 0.3), 0 0 10px oklch(66.7% 0.295 322.15deg / 0.1)" }}
                 className="px-6 py-2 rounded-full bg-gradient-to-r from-neutral-800 to-neutral-700 cursor-pointer
                            border border-white/5 text-gray-400/70 shadow-xl hover:border-fuchsia-500/30 text-sm
                            focus:outline-none min-w-[170px] text-left font-mono"
               >
-                <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                  <ChevronUpDownIcon className="h-5 w-5 text-gray-400" />
+
+                <span
+                  className="pointer-events-none absolute inset-y-0
+                             right-0 flex items-center pr-2"
+                >
+
+                  <ChevronUpDownIcon
+                    className="h-5 w-5
+                               text-gray-400"
+                  />
+
                 </span>
+
                 {date ? date.toLocaleDateString("it-IT") : "Scegli Data"}
+
               </Popover.Button>
 
+              {/* GESTIONE TRANSIZIONE APERTURA/CHIUSURA DEL PANNELLO CHE CONTIENE IL CALENDARIO */}
               <Transition
                 enter="transition ease-out duration-200"
                 enterFrom="opacity-0 scale-90"
@@ -65,22 +89,30 @@ export default function Header() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-90"
               >
+
+                {/* PANNELLO CHE CONTIENE IL CALENDARIO */}
                 <Popover.Panel
-                  className="absolute right-0 mt-2 p-4 rounded-xl
-                             bg-gradient-to-r from-neutral-900/80 to-neutral-800/80 backdrop-blur
+                  className="absolute right-0 mt-2 p-4 rounded-xl bg-gradient-to-r
+                             from-neutral-900/80 to-neutral-800/80 backdrop-blur
                              border border-white/5 shadow-xl z-50 min-w-[320px]"
                 >
+
                   <Calendar
                     date={date}
                     setDate={(d) => {
                       setDate(d);
-                      close(); // CHIUDE subito il calendario
+                      close();
                     }}
                   />
+
                 </Popover.Panel>
+
               </Transition>
+
             </>
+
           )}
+
         </Popover>
 
         {/* SELECT OPERATORI */}
@@ -98,15 +130,25 @@ export default function Header() {
           options={casse}
           placeholder="Scegli Cassa"
         />
+
       </div>
+
     </header>
   );
 }
 
+// COMPONENTE SELECT PERSONALIZZO
 function CustomSelect({ selected, setSelected, options, placeholder }) {
   return (
-    <Listbox value={selected} onChange={setSelected}>
-      <div className="relative min-w-[170px]">
+    <Listbox
+      value={selected}
+      onChange={setSelected}
+    >
+
+      <div
+        className="relative min-w-[170px]"
+      >
+        {/* BOTTONE DEL SELECT PERSONALIZZATO */}
         <Listbox.Button
           style={{ boxShadow: "0 0 5px oklch(66.7% 0.295 322.15deg / 0.3), 0 0 10px oklch(66.7% 0.295 322.15deg / 0.1)" }}
           className="relative w-full cursor-pointer rounded-full text-sm
@@ -114,14 +156,28 @@ function CustomSelect({ selected, setSelected, options, placeholder }) {
                      border border-white/5 py-2 pl-3 pr-10 text-left text-gray-400/70
                      shadow-xl focus:outline-none font-mono hover:border-fuchsia-500/30"
         >
-          <span className="block truncate">
+
+          <span
+            className="block truncate"
+          >
+
             {selected ? selected.name : placeholder}
+
           </span>
-          <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-            <ChevronUpDownIcon className="h-5 w-5 text-gray-400" />
+
+          <span
+            className="pointer-events-none absolute inset-y-0
+                       right-0 flex items-center pr-2"
+          >
+
+            <ChevronUpDownIcon
+              className="h-5 w-5 text-gray-400"
+            />
           </span>
+
         </Listbox.Button>
 
+        {/*  */}
         <Transition
           leave="transition ease-in duration-100"
           leaveFrom="opacity-100"

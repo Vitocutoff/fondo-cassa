@@ -10,7 +10,9 @@ export default function Footer() {
     >
 
       <p>
-        &copy; {year} Fondo Cassa by Vito Licari.
+
+        &copy; {year} Fondo Cassa by Vito Licari
+
       </p>
 
     </footer>
