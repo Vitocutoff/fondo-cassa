@@ -75,7 +75,7 @@ export default function CoinCard() {
             >
 
               <div
-                className="text-sm text-gray-200"
+                className="text-sm text-gray-300"
               >
                 {c.label}
 

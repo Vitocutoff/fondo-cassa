@@ -28,7 +28,7 @@ export default function Header() {
 
     <header
       style={{ boxShadow: "0 0 5px oklch(66.7% 0.295 322.15deg / 0.3), 0 0 10px oklch(66.7% 0.295 322.15deg / 0.1)" }}
-      className="h-16 flex items-center justify-between px-6 z-50
+      className="h-18 flex items-center justify-between px-6 z-50
                  border-b border-white/5 bg-gradient-to-r
                  from-neutral-900 via-neutral-800 to-neutral-900"
     >
